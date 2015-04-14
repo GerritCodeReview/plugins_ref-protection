@@ -32,18 +32,12 @@ import com.google.gerrit.extensions.restapi.BadRequestException;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.project.CreateBranch;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 
-import org.eclipse.jgit.errors.RepositoryNotFoundException;
-import org.eclipse.jgit.lib.ObjectId;
-import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.revwalk.RevCommit;
-import org.eclipse.jgit.revwalk.RevWalk;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,29 +50,23 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
   private final CreateBranch.Factory createBranchFactory;
   private final ProjectControl.GenericFactory projectControl;
   private final CurrentUser user;
-  private final GitRepositoryManager repoManager;
 
   @Inject
   RefUpdateListener(CreateBranch.Factory createBranchFactory,
       ProjectControl.GenericFactory p,
-      CurrentUser user,
-      GitRepositoryManager repoManager) {
+      CurrentUser user) {
     this.createBranchFactory = createBranchFactory;
     this.projectControl = p;
     this.user = user;
-    this.repoManager = repoManager;
   }
 
   @Override
   public void onGitReferenceUpdated(final Event event) {
-    if (isRelevantRef(event)) {
+    if (isRelevantEvent(event)) {
       Project.NameKey nameKey = new Project.NameKey(event.getProjectName());
       try {
-        ProjectResource project =
-            new ProjectResource(projectControl.controlFor(nameKey, user));
-        if (isRefDeleted(event) || isNonFastForwardUpdate(event, project)) {
-          createBackupBranch(event, project);
-        }
+        createBackupBranch(event,
+            new ProjectResource(projectControl.controlFor(nameKey, user)));
       } catch (NoSuchProjectException | IOException e) {
         log.error(e.getMessage(), e);
       }
@@ -112,59 +100,15 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
   }
 
   /**
-   * Is the event on a relevant ref?
+   * Is the event relevant?
    *
    * @param event the Event
    * @return True if relevant, otherwise False.
    */
-  private boolean isRelevantRef(Event event) {
-    return (!isNewRef(event)) &&
-           (event.getRefName().startsWith(R_HEADS)
-            || event.getRefName().startsWith(R_TAGS));
-  }
-
-  /**
-   * Is the event a new ref?
-   *
-   * @param event the Event
-   * @return True if a new ref, otherwise False.
-   */
-  private boolean isNewRef(Event event) {
-    return event.getOldObjectId().equals(ObjectId.zeroId().getName());
-  }
-
-  /**
-   * Is the event a ref deletion?
-   *
-   * @param event the Event
-   * @return True if a ref deletion, otherwise False.
-   */
-  private boolean isRefDeleted(Event event) {
-    if (event.getNewObjectId().equals(ObjectId.zeroId().getName())) {
-      log.info(String.format(
-          "Ref Deleted: project [%s] refname [%s] old object id [%s]",
-          event.getProjectName(), event.getRefName(), event.getOldObjectId()));
-      return true;
-    }
-    return false;
-  }
-
-  /**
-   * Is the event a non-fast-forward update?
-   *
-   * @param event the Event
-   * @return True if a non-fast-forward update, otherwise False.
-   */
-  private boolean isNonFastForwardUpdate(Event event, ProjectResource project)
-      throws RepositoryNotFoundException, IOException {
-    try (Repository repo = repoManager.openRepository(project.getNameKey())) {
-      try (RevWalk walk = new RevWalk(repo)) {
-        RevCommit oldCommit =
-            walk.parseCommit(repo.resolve(event.getOldObjectId()));
-        RevCommit newCommit =
-            walk.parseCommit(repo.resolve(event.getNewObjectId()));
-        return !walk.isMergedInto(oldCommit, newCommit);
-      }
-    }
+  private boolean isRelevantEvent(Event event) {
+    return ((event.isDelete() || event.isNonFastForward()) &&
+            !event.isCreate() &&
+            (event.getRefName().startsWith(R_HEADS) ||
+             event.getRefName().startsWith(R_TAGS)));
   }
 }
