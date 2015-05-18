@@ -29,6 +29,11 @@ java_library(
   deps = [':ref-protection__plugin'],
 )
 
+java_library(
+  name = 'classpath',
+  deps = [':ref-protection__plugin'],
+)
+
 java_test(
   name = 'ref-protection_tests',
   srcs = glob(['src/test/java/**/*.java']),
