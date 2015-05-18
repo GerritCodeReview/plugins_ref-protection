@@ -1,3 +1,5 @@
+include_defs('//bucklets/gerrit_plugin.bucklet')
+
 gerrit_plugin(
   name = 'ref-protection',
   srcs = glob(['src/main/java/**/*.java']),
@@ -8,6 +10,11 @@ gerrit_plugin(
     'Gerrit-PluginName: ref-protection',
     'Gerrit-Module: com.googlesource.gerrit.plugins.refprotection.RefProtectionModule'
   ],
+)
+
+java_library(
+  name = 'classpath',
+  deps = [':ref-protection__plugin'],
 )
 
 java_test(
