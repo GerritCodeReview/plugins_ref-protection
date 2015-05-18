@@ -36,7 +36,6 @@ Add link to the .watchmanconfig file:
 
 To build the plugin, issue the following command:
 
-
 ```
   buck build plugin
 ```
@@ -45,6 +44,12 @@ The output is created in
 
 ```
   buck-out/gen/ref-protection.jar
+```
+
+To run unit tests, issue the following command:
+
+```
+  buck test
 ```
 
 Build in Gerrit tree
@@ -67,6 +72,12 @@ This project can be imported into the Eclipse IDE:
 
 ```
   ./tools/eclipse/project.py
+```
+
+To run the unit tests and restrict to run only the tests from this plugin:
+
+```
+  buck test --include ref-protection
 ```
 
 How to build the Gerrit Plugin API is described in the [Gerrit
