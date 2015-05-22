@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4de0b53c_c296e24a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2015-05-22T09:22:12Z",
+      "side": 1,
+      "message": "*Sigh*\n\nWrong email address. I prefer another one. Missed it, next time ;-)\n\nCreation of changes from the UI is broken as well. it takes this email address, while it should take another one. May be add Drop-Down there and list all know email addresses for a user to select from?",
+      "range": {
+        "startLine": 2,
+        "startChar": 29,
+        "endLine": 2,
+        "endChar": 54
+      },
+      "revId": "03593823f193f997ea1989ec9a1715703108a75b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
