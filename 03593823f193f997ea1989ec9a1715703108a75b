@@ -22,6 +22,30 @@
       "revId": "03593823f193f997ea1989ec9a1715703108a75b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad9cd1d8_8defe1b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-05-22T09:25:06Z",
+      "side": 1,
+      "message": "Are you sure it\u0027s broken?  Isn\u0027t it because you have the gmail one as the preferred email address?\n\nAnyway, sorry, I should have noticed that you always use the other one as author.",
+      "parentUuid": "4de0b53c_c296e24a",
+      "range": {
+        "startLine": 2,
+        "startChar": 29,
+        "endLine": 2,
+        "endChar": 54
+      },
+      "revId": "03593823f193f997ea1989ec9a1715703108a75b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
