@@ -23,23 +23,64 @@
  */
 package com.googlesource.gerrit.plugins.refprotection;
 
+import com.google.gerrit.extensions.events.GitReferenceUpdatedListener.Event;
+import com.google.gerrit.extensions.restapi.AuthException;
+import com.google.gerrit.extensions.restapi.BadRequestException;
+import com.google.gerrit.extensions.restapi.ResourceConflictException;
+import com.google.gerrit.server.project.CreateBranch;
+import com.google.gerrit.server.project.ProjectResource;
+import com.google.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static org.eclipse.jgit.lib.Constants.R_HEADS;
 import static org.eclipse.jgit.lib.Constants.R_REFS;
 import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class BackupBranch {
+public class BackupRef {
   public static final String R_BACKUPS = R_REFS + "backups/";
+  private static final Logger log =
+      LoggerFactory.getLogger(BackupRef.class);
+  private final CreateBranch.Factory createBranchFactory;
 
-  public static String get(String branchName) {
-    if (branchName.startsWith(R_HEADS) || branchName.startsWith(R_TAGS)) {
+  @Inject
+  BackupRef(CreateBranch.Factory createBranchFactory) {
+    this.createBranchFactory = createBranchFactory;
+  }
+
+  public void createBackup(Event event, ProjectResource project) {
+    String branchRef = event.getRefName();
+    String backupRef = get(branchRef);
+
+    // No-op if the backup ref name is same as the original
+    if (backupRef.equals(branchRef)) {
+      return;
+    }
+
+    CreateBranch.Input input = new CreateBranch.Input();
+    input.ref = backupRef;
+    input.revision = event.getOldObjectId();
+
+    try {
+      createBranchFactory.create(backupRef).apply(project, input);
+    } catch (BadRequestException | AuthException | ResourceConflictException
+        | IOException e) {
+      log.error(e.getMessage(), e);
+    }
+  }
+
+  public static String get(String refName) {
+    if (refName.startsWith(R_HEADS) || refName.startsWith(R_TAGS)) {
       return String.format("%s-%s",
-          R_BACKUPS + branchName.replaceFirst(R_REFS, ""),
+          R_BACKUPS + refName.replaceFirst(R_REFS, ""),
           new SimpleDateFormat("YYYYMMdd-HHmmss").format(new Date()));
     }
 
-    return branchName;
+    return refName;
   }
 }
