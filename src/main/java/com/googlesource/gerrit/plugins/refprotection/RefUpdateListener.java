@@ -27,13 +27,9 @@ import static org.eclipse.jgit.lib.Constants.R_HEADS;
 import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
 import com.google.gerrit.extensions.events.GitReferenceUpdatedListener;
-import com.google.gerrit.extensions.restapi.AuthException;
-import com.google.gerrit.extensions.restapi.BadRequestException;
-import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.git.GitRepositoryManager;
-import com.google.gerrit.server.project.CreateBranch;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectResource;
@@ -53,20 +49,20 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
 
   private static final Logger log =
       LoggerFactory.getLogger(RefUpdateListener.class);
-  private final CreateBranch.Factory createBranchFactory;
   private final ProjectControl.GenericFactory projectControl;
   private final CurrentUser user;
   private final GitRepositoryManager repoManager;
+  private final BackupBranch backupBranch;
 
   @Inject
-  RefUpdateListener(CreateBranch.Factory createBranchFactory,
-      ProjectControl.GenericFactory p,
+  RefUpdateListener(ProjectControl.GenericFactory p,
       CurrentUser user,
-      GitRepositoryManager repoManager) {
-    this.createBranchFactory = createBranchFactory;
+      GitRepositoryManager repoManager,
+      BackupBranch backupBranch) {
     this.projectControl = p;
     this.user = user;
     this.repoManager = repoManager;
+    this.backupBranch = backupBranch;
   }
 
   @Override
@@ -77,37 +73,11 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
         ProjectResource project =
             new ProjectResource(projectControl.controlFor(nameKey, user));
         if (isRefDeleted(event) || isNonFastForwardUpdate(event, project)) {
-          createBackupBranch(event, project);
+          backupBranch.createBackup(event, project);
         }
       } catch (NoSuchProjectException | IOException e) {
         log.error(e.getMessage(), e);
       }
-    }
-  }
-
-  /**
-   * Create a backup branch for the given ref.
-   *
-   * @param event the Event
-   */
-  private void createBackupBranch(Event event, ProjectResource project) {
-    String branchName = event.getRefName();
-    String backupRef = BackupBranch.get(branchName);
-
-    // No-op if the backup branch name is same as the original
-    if (backupRef.equals(branchName)) {
-      return;
-    }
-
-    CreateBranch.Input input = new CreateBranch.Input();
-    input.ref = backupRef;
-    input.revision = event.getOldObjectId();
-
-    try {
-      createBranchFactory.create(backupRef).apply(project, input);
-    } catch (BadRequestException | AuthException | ResourceConflictException
-        | IOException e) {
-      log.error(e.getMessage(), e);
     }
   }
 
