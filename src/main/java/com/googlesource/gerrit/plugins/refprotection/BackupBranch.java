@@ -23,17 +23,58 @@
  */
 package com.googlesource.gerrit.plugins.refprotection;
 
+import com.google.gerrit.extensions.events.GitReferenceUpdatedListener.Event;
+import com.google.gerrit.extensions.restapi.AuthException;
+import com.google.gerrit.extensions.restapi.BadRequestException;
+import com.google.gerrit.extensions.restapi.ResourceConflictException;
+import com.google.gerrit.server.project.CreateBranch;
+import com.google.gerrit.server.project.ProjectResource;
+import com.google.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static org.eclipse.jgit.lib.Constants.R_HEADS;
 import static org.eclipse.jgit.lib.Constants.R_REFS;
 import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BackupBranch {
   public static final String R_BACKUPS = R_REFS + "backups/";
+  private static final Logger log =
+      LoggerFactory.getLogger(BackupBranch.class);
+  private final CreateBranch.Factory createBranchFactory;
 
-  public static String get(String branchName) {
+  @Inject
+  BackupBranch(CreateBranch.Factory createBranchFactory) {
+    this.createBranchFactory = createBranchFactory;
+  }
+
+  public void createBackup(Event event, ProjectResource project) {
+    String branchName = event.getRefName();
+    String backupRef = get(branchName);
+
+    // No-op if the backup branch name is same as the original
+    if (backupRef.equals(branchName)) {
+      return;
+    }
+
+    CreateBranch.Input input = new CreateBranch.Input();
+    input.ref = backupRef;
+    input.revision = event.getOldObjectId();
+
+    try {
+      createBranchFactory.create(backupRef).apply(project, input);
+    } catch (BadRequestException | AuthException | ResourceConflictException
+        | IOException e) {
+      log.error(e.getMessage(), e);
+    }
+  }
+
+  private String get(String branchName) {
     if (branchName.startsWith(R_HEADS) || branchName.startsWith(R_TAGS)) {
       return String.format("%s-%s",
           R_BACKUPS + branchName.replaceFirst(R_REFS, ""),
