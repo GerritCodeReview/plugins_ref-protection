@@ -26,9 +26,11 @@ package com.googlesource.gerrit.plugins.refprotection;
 import static org.eclipse.jgit.lib.Constants.R_HEADS;
 import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.events.GitReferenceUpdatedListener;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectControl;
@@ -53,26 +55,39 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
   private final CurrentUser user;
   private final GitRepositoryManager repoManager;
   private final BackupBranch backupBranch;
+  private final PluginConfigFactory cfg;
+  private final String pluginName;
+  private final boolean protectDeleted;
+  private final boolean protectFastForward;
 
   @Inject
   RefUpdateListener(ProjectControl.GenericFactory p,
       CurrentUser user,
       GitRepositoryManager repoManager,
-      BackupBranch backupBranch) {
+      BackupBranch backupBranch,
+      PluginConfigFactory cfg,
+      @PluginName String pluginName) {
     this.projectControl = p;
     this.user = user;
     this.repoManager = repoManager;
     this.backupBranch = backupBranch;
+    this.cfg = cfg;
+    this.pluginName = pluginName;
+    this.protectDeleted =
+        cfg.getFromGerritConfig(pluginName).getBoolean("protectDeleted", true);
+    this.protectFastForward =
+        cfg.getFromGerritConfig(pluginName).getBoolean("protectFastForward", true);
   }
 
   @Override
   public void onGitReferenceUpdated(final Event event) {
-    if (isRelevantRef(event)) {
+    if ((protectDeleted || protectFastForward) && isRelevantRef(event)) {
       Project.NameKey nameKey = new Project.NameKey(event.getProjectName());
       try {
         ProjectResource project =
             new ProjectResource(projectControl.controlFor(nameKey, user));
-        if (isRefDeleted(event) || isNonFastForwardUpdate(event, project)) {
+        if ((protectDeleted && isRefDeleted(event))
+            || (protectFastForward && isNonFastForwardUpdate(event, project))) {
           backupBranch.createBackup(event, project);
         }
       } catch (NoSuchProjectException | IOException e) {
