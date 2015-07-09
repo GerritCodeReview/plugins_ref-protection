@@ -23,7 +23,7 @@
  */
 package com.googlesource.gerrit.plugins.refprotection;
 
-import com.google.gerrit.extensions.events.GitReferenceUpdatedListener;
+import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.AbstractModule;
 
@@ -31,7 +31,7 @@ public class RefProtectionModule extends AbstractModule {
   public static final String NAME = "ref-protection";
   @Override
   protected void configure() {
-    DynamicSet.bind(binder(), GitReferenceUpdatedListener.class).to(
+    DynamicSet.bind(binder(), EventListener.class).to(
         RefUpdateListener.class);
   }
 }
