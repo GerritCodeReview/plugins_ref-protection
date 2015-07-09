@@ -29,6 +29,7 @@ import static org.eclipse.jgit.lib.Constants.R_TAGS;
 import com.google.gerrit.extensions.events.GitReferenceUpdatedListener;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectControl;
@@ -53,16 +54,19 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
   private final CurrentUser user;
   private final GitRepositoryManager repoManager;
   private final BackupBranch backupBranch;
+  private final PluginConfigFactory cfg;
 
   @Inject
   RefUpdateListener(ProjectControl.GenericFactory p,
       CurrentUser user,
       GitRepositoryManager repoManager,
-      BackupBranch backupBranch) {
+      BackupBranch backupBranch,
+      PluginConfigFactory cfg) {
     this.projectControl = p;
     this.user = user;
     this.repoManager = repoManager;
     this.backupBranch = backupBranch;
+    this.cfg = cfg;
   }
 
   @Override
@@ -72,7 +76,14 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
       try {
         ProjectResource project =
             new ProjectResource(projectControl.controlFor(nameKey, user));
-        if (isRefDeleted(event) || isNonFastForwardUpdate(event, project)) {
+        boolean protectDeleted =
+            cfg.getFromGerritConfig(RefProtectionModule.NAME).getBoolean(
+                "protectDeleted", true);
+        boolean protectFastForward =
+            cfg.getFromGerritConfig(RefProtectionModule.NAME).getBoolean(
+                "protectFastForward", true);
+        if ((protectDeleted && isRefDeleted(event))
+            || (protectFastForward && isNonFastForwardUpdate(event, project))) {
           backupBranch.createBackup(event, project);
         }
       } catch (NoSuchProjectException | IOException e) {
