@@ -24,7 +24,6 @@
 package com.googlesource.gerrit.plugins.refprotection;
 
 import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.extensions.events.GitReferenceUpdatedListener.Event;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.BadRequestException;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
@@ -70,7 +69,7 @@ public class BackupBranch {
     this.pluginName = pluginName;
   }
 
-  public void createBackup(Event event, ProjectResource project) {
+  public void createBackup(RefUpdatedEvent event, ProjectResource project) {
     String branchName = event.getRefName();
     String backupRef = get(project, branchName);
 
@@ -81,7 +80,7 @@ public class BackupBranch {
 
     CreateBranch.Input input = new CreateBranch.Input();
     input.ref = backupRef;
-    input.revision = event.getOldObjectId();
+    input.revision = event.refUpdate.oldRev;
 
     try {
       createBranchFactory.create(backupRef).apply(project, input);
