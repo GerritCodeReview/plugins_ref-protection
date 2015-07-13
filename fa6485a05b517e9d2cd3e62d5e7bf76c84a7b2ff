@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "38b826d4_592983c0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefProtectionModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1018662
+      },
+      "writtenOn": "2015-07-13T19:12:35Z",
+      "side": 1,
+      "message": "Remove this, and inject @PluginName where you need it.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9814b289_64d7aa32",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 1
@@ -13,6 +36,29 @@
       "writtenOn": "2015-07-13T05:47:06Z",
       "side": 1,
       "message": "Add a check before this line that at least one of the options is true.  If both are false we can just return and don\u0027t need to instantiate the Project.NameKey and ProjectResource for nothing.",
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38b826d4_792e47cb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1018662
+      },
+      "writtenOn": "2015-07-13T19:12:35Z",
+      "side": 1,
+      "message": "Inject the pluginName and use it.\n\nThis method call doesn\u0027t reload the gerrit config to use latest values. Are you sure you don\u0027t want to use\ngetFromGerritConfig(pluginName, true) ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 61
+      },
       "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -35,6 +81,29 @@
         "startChar": 8,
         "endLine": 83,
         "endChar": 45
+      },
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38b826d4_99223bdc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018662
+      },
+      "writtenOn": "2015-07-13T19:12:35Z",
+      "side": 1,
+      "message": "same as previous comment",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 60
       },
       "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
