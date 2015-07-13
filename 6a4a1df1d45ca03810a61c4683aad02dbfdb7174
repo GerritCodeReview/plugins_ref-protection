@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "780ffe78_e3ea72e9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T05:52:05Z",
+      "side": 1,
+      "message": "Left-pad this with zeroes?",
+      "range": {
+        "startLine": 128,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "6a4a1df1d45ca03810a61c4683aad02dbfdb7174",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
