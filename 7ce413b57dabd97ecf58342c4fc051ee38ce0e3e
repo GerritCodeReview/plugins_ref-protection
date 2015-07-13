@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9814b289_84ed8605",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T06:01:33Z",
+      "side": 1,
+      "message": "This file now also deals with tags, so maybe good to rename it to something better than BackupBranch.\n\n\"CreateBackup\"?",
+      "revId": "7ce413b57dabd97ecf58342c4fc051ee38ce0e3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9814b289_a4f082db",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T06:01:33Z",
+      "side": 1,
+      "message": "Move this outside of the if-block.",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "7ce413b57dabd97ecf58342c4fc051ee38ce0e3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9814b289_e4ea7ae9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T06:01:33Z",
+      "side": 1,
+      "message": "\"backup tag\".  same in the following messages.",
+      "range": {
+        "startLine": 117,
+        "startChar": 46,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "7ce413b57dabd97ecf58342c4fc051ee38ce0e3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "780ffe78_23064a5a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T06:01:33Z",
+      "side": 1,
+      "message": "Remove this.  See lines 84-87.",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 7
+      },
+      "revId": "7ce413b57dabd97ecf58342c4fc051ee38ce0e3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
