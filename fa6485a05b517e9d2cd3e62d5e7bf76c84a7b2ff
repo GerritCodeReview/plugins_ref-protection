@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9814b289_64d7aa32",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T05:47:06Z",
+      "side": 1,
+      "message": "Add a check before this line that at least one of the options is true.  If both are false we can just return and don\u0027t need to instantiate the Project.NameKey and ProjectResource for nothing.",
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9814b289_04e23618",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-07-13T05:47:06Z",
+      "side": 1,
+      "message": "Make these member variables and move the initialisations into the constructor?",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
