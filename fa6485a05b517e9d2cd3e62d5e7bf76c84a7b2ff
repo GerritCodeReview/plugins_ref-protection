@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "38b826d4_3955af22",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-07-13T22:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9814b289_64d7aa32",
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38b826d4_792e47cb",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 1
@@ -53,6 +71,30 @@
       "writtenOn": "2015-07-13T19:12:35Z",
       "side": 1,
       "message": "Inject the pluginName and use it.\n\nThis method call doesn\u0027t reload the gerrit config to use latest values. Are you sure you don\u0027t want to use\ngetFromGerritConfig(pluginName, true) ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 61
+      },
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c8ea77_d603a441",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-07-13T22:10:00Z",
+      "side": 1,
+      "message": "Done, but I\u0027m not sure what your second comment is referring to.  The Plugin API documentation may be incomplete in this case, but I didn\u0027t see the exact call you describe.  This is derived from the case that dev-plugins describes.\n\nIn any case, loading settings on plugin load is *likely* okay, as many other plugins behave similarly.  Indeed, it\u0027s nice being able to stage changes, then influence when the change is active through a deliberate action.",
+      "parentUuid": "38b826d4_792e47cb",
       "range": {
         "startLine": 80,
         "startChar": 12,
@@ -104,6 +146,30 @@
         "startChar": 12,
         "endLine": 83,
         "endChar": 60
+      },
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c8ea77_f600a037",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-07-13T22:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9814b289_04e23618",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 45
       },
       "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
