@@ -22,6 +22,30 @@
       "revId": "6a4a1df1d45ca03810a61c4683aad02dbfdb7174",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c8ea77_16b43c22",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-07-13T08:22:46Z",
+      "side": 1,
+      "message": "Sure, you could, but I didn\u0027t see much point.  The inspiration I had here was to match how we handle individual revisions of a change.  I would imagine the parseInt to figure out which number is the next in sequence would still do the right thing -- so this is a matter of preference.",
+      "parentUuid": "780ffe78_e3ea72e9",
+      "range": {
+        "startLine": 128,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "6a4a1df1d45ca03810a61c4683aad02dbfdb7174",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
