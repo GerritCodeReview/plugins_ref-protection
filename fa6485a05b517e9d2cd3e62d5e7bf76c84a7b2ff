@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "38b826d4_795f2740",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1018662
+      },
+      "writtenOn": "2015-07-14T14:16:11Z",
+      "side": 1,
+      "message": "I guess it wasn\u0027t updated in the documentation, but plugins are now able to check for config updates [1].\nIf the intended behaviour is to enable changes through a deliberate action, then this is fine. \n\n[1] https://gerrit-review.googlesource.com/#/c/54060/",
+      "parentUuid": "d8c8ea77_d603a441",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 61
+      },
+      "revId": "fa6485a05b517e9d2cd3e62d5e7bf76c84a7b2ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9814b289_04e23618",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 1
