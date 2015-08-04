@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aafbdc84_ac1ce3a0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-04T12:37:51Z",
+      "side": 1,
+      "message": "Somehow, the RefUpdatedEvent change got squashed into this...",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "e86d63d8e3b97df4db9baac2ba1f14c9b41816d0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
