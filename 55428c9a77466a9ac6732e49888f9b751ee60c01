@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6afe4471_d213c48c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-04T12:22:34Z",
+      "side": 1,
+      "message": "Eclipse was warning me this morning... technically we don\u0027t use these outside the constructor.  Any preference to removing them here or to keeping them around with the class?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "55428c9a77466a9ac6732e49888f9b751ee60c01",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38b826d4_99631b11",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 2
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "aafbdc84_0c2ed7c5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-04T12:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38b826d4_99631b11",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "55428c9a77466a9ac6732e49888f9b751ee60c01",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38b826d4_b960df04",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 2
@@ -36,6 +83,30 @@
       "writtenOn": "2015-07-14T14:16:11Z",
       "side": 1,
       "message": "nit: unnecessary wrap",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "55428c9a77466a9ac6732e49888f9b751ee60c01",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aafbdc84_6c231bde",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-04T12:22:34Z",
+      "side": 1,
+      "message": "FYI, the Google formatter in Eclipse will wrap the last parameter, but done.",
+      "parentUuid": "38b826d4_b960df04",
       "range": {
         "startLine": 80,
         "startChar": 9,
