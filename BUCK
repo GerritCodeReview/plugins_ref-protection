@@ -4,7 +4,7 @@ gerrit_plugin(
   resources = glob(['src/main/resources/**/*']),
   manifest_entries = [
     'Implementation-Title: Ref Protection plugin',
-    'Implementation-URL: http://review-plus.sonyericsson.net/#/admin/projects/gerrit/plugins/ref-protection',
+    'Implementation-URL: http://gerrit.googlesource.com/plugins/ref-protection',
     'Gerrit-PluginName: ref-protection',
     'Gerrit-Module: com.googlesource.gerrit.plugins.refprotection.RefProtectionModule'
   ],
