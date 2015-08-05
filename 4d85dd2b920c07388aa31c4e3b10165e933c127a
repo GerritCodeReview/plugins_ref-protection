@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a1260d9_e9b1f531",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-05T20:30:22Z",
+      "side": 1,
+      "message": "I think I recall someone suggesting renaming this to BackupRef? Anyway, seems like it\u0027d be a more fitting name now...",
+      "revId": "4d85dd2b920c07388aa31c4e3b10165e933c127a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
