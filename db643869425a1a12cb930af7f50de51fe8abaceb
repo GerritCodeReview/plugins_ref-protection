@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a0f24b2_eab1e731",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-05T20:18:17Z",
+      "side": 1,
+      "message": "This *will* result in a ClassCastException... as I found out rather violently today. :)",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 55
+      },
+      "revId": "db643869425a1a12cb930af7f50de51fe8abaceb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
