@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a1260d9_c9b63128",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-05T20:30:07Z",
+      "side": 1,
+      "message": "This would make sense to rename...",
+      "range": {
+        "startLine": 171,
+        "startChar": 17,
+        "endLine": 171,
+        "endChar": 35
+      },
+      "revId": "d822b7569690505bec74ca443211f3beb6e2227a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a09acaf_e8b1f331",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupBranch.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-08-05T20:30:07Z",
+      "side": 1,
+      "message": "This would make sense to rename (since it may make a tag or branch)",
+      "range": {
+        "startLine": 181,
+        "startChar": 17,
+        "endLine": 181,
+        "endChar": 36
+      },
+      "revId": "d822b7569690505bec74ca443211f3beb6e2227a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
