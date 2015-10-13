@@ -23,14 +23,20 @@
  */
 package com.googlesource.gerrit.plugins.refprotection;
 
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.events.GitReferenceUpdatedListener.Event;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.BadRequestException;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
+import com.google.gerrit.server.config.PluginConfigFactory;
+import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.project.CreateBranch;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 
+import org.eclipse.jgit.errors.RepositoryNotFoundException;
+import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.lib.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +53,10 @@ public class BackupRef {
   private static final Logger log =
       LoggerFactory.getLogger(BackupRef.class);
   private final CreateBranch.Factory createBranchFactory;
+  @Inject private static PluginConfigFactory cfg;
+  @Inject private static GitRepositoryManager repoManager;
+  @PluginName private static String pluginName;
+
 
   @Inject
   BackupRef(CreateBranch.Factory createBranchFactory) {
@@ -55,7 +65,7 @@ public class BackupRef {
 
   public void createBackup(Event event, ProjectResource project) {
     String refName = event.getRefName();
-    String backupRef = get(refName);
+    String backupRef = get(project, refName);
 
     // No-op if the backup branch name is same as the original
     if (backupRef.equals(refName)) {
@@ -74,7 +84,16 @@ public class BackupRef {
     }
   }
 
-  static String get(String refName) {
+  static String get(ProjectResource project, String refName) {
+    if (cfg.getFromGerritConfig(pluginName).getBoolean("useTimestamp", true)) {
+      return getTimestampBranch(refName);
+    }
+    else {
+      return getSequentialBranch(project, refName);
+    }
+  }
+
+  private static String getTimestampBranch(String refName) {
     if (refName.startsWith(R_HEADS) || refName.startsWith(R_TAGS)) {
       return String.format("%s-%s",
           R_BACKUPS + refName.replaceFirst(R_REFS, ""),
@@ -82,5 +101,28 @@ public class BackupRef {
     }
 
     return refName;
+  }
+
+  private static String getSequentialBranch(ProjectResource project, String branchName) {
+    Integer rev = 1;
+    String deletedName = branchName.replaceFirst(R_REFS, "");
+    try (Repository git = repoManager.openRepository(project.getNameKey())) {
+      for (Ref ref : git.getAllRefs().values()) {
+        String name = ref.getName();
+        if (name.startsWith(R_BACKUPS + deletedName + "/")) {
+          Integer thisNum =
+              Integer.parseInt(name.substring(name.lastIndexOf('/') + 1));
+          if (thisNum >= rev) {
+            rev = thisNum + 1;
+          }
+        }
+      }
+    } catch (RepositoryNotFoundException e) {
+      log.error("Repository does not exist", e);
+    } catch (IOException e) {
+      log.error("Could not determine latest revision of deleted branch", e);
+    }
+
+    return R_BACKUPS + deletedName + "/" + rev;
   }
 }
