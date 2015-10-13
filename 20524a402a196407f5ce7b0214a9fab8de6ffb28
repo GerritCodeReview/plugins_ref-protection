@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf0a4e5b_8f08f56a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-10-13T15:17:16Z",
+      "side": 1,
+      "message": "Does this really need to be public if just exposed for the test class?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "20524a402a196407f5ce7b0214a9fab8de6ffb28",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ff10aa5_ceeb23cf",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 3
