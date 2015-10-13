@@ -35,8 +35,15 @@ import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 
 import org.eclipse.jgit.errors.RepositoryNotFoundException;
+import org.eclipse.jgit.lib.ObjectId;
+import org.eclipse.jgit.lib.ObjectInserter;
+import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.lib.RefUpdate;
+import org.eclipse.jgit.lib.RefUpdate.Result;
 import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.lib.TagBuilder;
+import org.eclipse.jgit.revwalk.RevWalk;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,22 +72,84 @@ public class BackupRef {
 
   public void createBackup(RefUpdatedEvent event, ProjectResource project) {
     String refName = event.getRefName();
-    String backupRef = get(project, refName);
 
-    // No-op if the backup branch name is same as the original
-    if (backupRef.equals(refName)) {
-      return;
-    }
+    if (cfg.getFromGerritConfig(pluginName).getBoolean(
+        "createTag", false)) {
+      TagBuilder tag = new TagBuilder();
+      try (Repository git = repoManager.openRepository(project.getNameKey())) {
+        String backupRef = get(project, refName);
 
-    CreateBranch.Input input = new CreateBranch.Input();
-    input.ref = backupRef;
-    input.revision = event.refUpdate.oldRev;
+        // No-op if the backup branch name is same as the original
+        if (backupRef.equals(refName)) {
+          return;
+        }
 
-    try {
-      createBranchFactory.create(backupRef).apply(project, input);
-    } catch (BadRequestException | AuthException | ResourceConflictException
-        | IOException e) {
-      log.error(e.getMessage(), e);
+        try (RevWalk revWalk = new RevWalk(git)) {
+          tag.setTagger(new PersonIdent(event.submitter.name,
+              event.submitter.email));
+          tag.setObjectId(revWalk.lookupCommit(ObjectId.fromString(event
+              .refUpdate.oldRev)));
+          String update = "Non-fast-forward update to";
+          if (event.refUpdate.newRev.equals(ObjectId.zeroId().getName())) {
+            update = "Deleted";
+          }
+          String type = "branch";
+          if (event.refUpdate.refName.startsWith(R_TAGS)) {
+            type = "tag";
+          }
+          tag.setMessage(update + " " + type + " " + event.refUpdate.refName);
+          tag.setTag(backupRef);
+
+          ObjectInserter inserter = git.newObjectInserter();
+          ObjectId tagId = inserter.insert(tag);
+          inserter.flush();
+          RefUpdate tagRef = git.updateRef(tag.getTag());
+          tagRef.setNewObjectId(tagId);
+          tagRef.setRefLogMessage("tagged deleted branch/tag " + tag.getTag(),
+              false);
+          tagRef.setForceUpdate(false);
+          Result result = tagRef.update();
+          switch (result) {
+            case NEW:
+            case FORCED:
+              log.debug("Successfully created backup tag");
+              break;
+
+            case LOCK_FAILURE:
+              log.error("Failed to lock repository while creating backup tag");
+              break;
+
+            case REJECTED:
+              log.error("Tag already exists while creating backup tag");
+              break;
+
+            default:
+              log.error("Unknown error while creating backup tag");
+          }
+        }
+      } catch (RepositoryNotFoundException e) {
+        log.error("Repository does not exist", e);
+      } catch (IOException e) {
+        log.error("Could not open repository", e);
+      }
+    } else {
+      String backupRef = get(project, refName);
+
+      // No-op if the backup branch name is same as the original
+      if (backupRef.equals(refName)) {
+        return;
+      }
+
+      CreateBranch.Input input = new CreateBranch.Input();
+      input.ref = backupRef;
+      input.revision = event.refUpdate.oldRev;
+
+      try {
+        createBranchFactory.create(backupRef).apply(project, input);
+      } catch (BadRequestException | AuthException | ResourceConflictException
+          | IOException e) {
+        log.error(e.getMessage(), e);
+      }
     }
   }
 
