@@ -26,9 +26,11 @@ package com.googlesource.gerrit.plugins.refprotection;
 import static org.eclipse.jgit.lib.Constants.R_HEADS;
 import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.events.GitReferenceUpdatedListener;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectControl;
@@ -53,26 +55,35 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
   private final CurrentUser user;
   private final GitRepositoryManager repoManager;
   private final BackupRef backupRef;
+  private final boolean protectDeleted;
+  private final boolean protectFastForward;
 
   @Inject
   RefUpdateListener(ProjectControl.GenericFactory p,
       CurrentUser user,
       GitRepositoryManager repoManager,
-      BackupRef backupRef) {
+      BackupRef backupRef,
+      PluginConfigFactory cfg,
+      @PluginName String pluginName) {
     this.projectControl = p;
     this.user = user;
     this.repoManager = repoManager;
     this.backupRef = backupRef;
+    this.protectDeleted =
+        cfg.getFromGerritConfig(pluginName).getBoolean("protectDeleted", true);
+    this.protectFastForward =
+        cfg.getFromGerritConfig(pluginName).getBoolean("protectFastForward", true);
   }
 
   @Override
   public void onGitReferenceUpdated(final Event event) {
-    if (isRelevantRef(event)) {
+    if ((protectDeleted || protectFastForward) && isRelevantRef(event)) {
       Project.NameKey nameKey = new Project.NameKey(event.getProjectName());
       try {
         ProjectResource project =
             new ProjectResource(projectControl.controlFor(nameKey, user));
-        if (isRefDeleted(event) || isNonFastForwardUpdate(event, project)) {
+        if ((protectDeleted && isRefDeleted(event))
+            || (protectFastForward && isNonFastForwardUpdate(event, project))) {
           backupRef.createBackup(event, project);
         }
       } catch (NoSuchProjectException | IOException e) {
@@ -127,6 +138,11 @@ class RefUpdateListener implements GitReferenceUpdatedListener {
    */
   private boolean isNonFastForwardUpdate(Event event, ProjectResource project)
       throws RepositoryNotFoundException, IOException {
+    if (isRefDeleted(event)) {
+      // Can't be non-fast-forward if the ref was deleted, and
+      // attempting a check would cause a MissingObjectException.
+      return false;
+    }
     try (Repository repo = repoManager.openRepository(project.getNameKey())) {
       try (RevWalk walk = new RevWalk(repo)) {
         RevCommit oldCommit =
