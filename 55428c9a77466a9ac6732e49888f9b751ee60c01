@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f4dd2ad_1cf0b591",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-10-14T02:35:56Z",
+      "side": 1,
+      "message": "I think it\u0027s better to remove the class members for now, to get rid of the warnings.  If we need them later, we can add them back.\n\nI\u0027ll upload a new PS.",
+      "parentUuid": "6afe4471_d213c48c",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "55428c9a77466a9ac6732e49888f9b751ee60c01",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38b826d4_99631b11",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 2
