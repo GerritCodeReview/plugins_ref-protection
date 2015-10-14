@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c758cb9_f3b2b01f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-10-14T14:39:13Z",
+      "side": 1,
+      "message": "Can get a MissingObjectException here if protectDeleted is false and the operation was a deletion...",
+      "range": {
+        "startLine": 86,
+        "startChar": 15,
+        "endLine": 86,
+        "endChar": 76
+      },
+      "revId": "422b1ef8935a03eb3d9319607a82fd567799d40e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
