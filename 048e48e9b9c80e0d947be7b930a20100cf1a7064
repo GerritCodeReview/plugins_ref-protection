@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f4dd2ad_7cc3b920",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-10-14T13:30:28Z",
+      "side": 1,
+      "message": "nit: else should be on the same line as the previous closing brace.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "048e48e9b9c80e0d947be7b930a20100cf1a7064",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f4dd2ad_5cc87d3b",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/refprotection/BackupRefNameTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-10-14T13:30:28Z",
+      "side": 1,
+      "message": "Did you intend to add tests for the new functionality here?",
+      "revId": "048e48e9b9c80e0d947be7b930a20100cf1a7064",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
