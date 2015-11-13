@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b4d3387_649eca7a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2015-11-13T23:49:15Z",
+      "side": 1,
+      "message": "Might be better to put this fix as a separate commit.",
+      "range": {
+        "startLine": 152,
+        "startChar": 10,
+        "endLine": 156,
+        "endChar": 28
+      },
+      "revId": "85860872dd46518a27471a198a4521b26ff74afa",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
