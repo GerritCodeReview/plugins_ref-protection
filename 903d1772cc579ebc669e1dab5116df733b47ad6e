@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db59db74_7ac7391a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2015-11-24T14:21:46Z",
+      "side": 1,
+      "message": "I haven\u0027t checked; give me a bit of time today and I\u0027ll get back to you. :)",
+      "parentUuid": "3b3f57ea_dd2dabd0",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "903d1772cc579ebc669e1dab5116df733b47ad6e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb5c2765_d982d3e3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
         "patchSetId": 1
