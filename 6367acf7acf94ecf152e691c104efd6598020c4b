@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7828650_12632c1b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-01-20T05:20:39Z",
+      "side": 1,
+      "message": "Tests are failing because this is null...",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "6367acf7acf94ecf152e691c104efd6598020c4b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
