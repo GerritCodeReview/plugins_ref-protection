@@ -8,14 +8,14 @@ public class BackupRefNameTest {
 
   @Test
   public void backupTimestampRefNameForTag() throws Exception {
-    String name = BackupRef.get(null, "refs/tags/v1.0");
+    String name = BackupRef.getTimestampBranch("refs/tags/v1.0");
     String expected_prefix = BackupRef.R_BACKUPS + "tags/v1.0-";
     assertThat(name).startsWith(expected_prefix);
   }
 
   @Test
   public void backupTimestampRefNameForBranch() throws Exception {
-    String name = BackupRef.get(null, "refs/heads/master");
+    String name = BackupRef.getTimestampBranch("refs/heads/master");
     String expected_prefix = BackupRef.R_BACKUPS + "heads/master-";
     assertThat(name).startsWith(expected_prefix);
   }

@@ -183,7 +183,7 @@ public class BackupRef {
     }
   }
 
-  private static String getTimestampBranch(String refName) {
+  static String getTimestampBranch(String refName) {
     if (refName.startsWith(R_HEADS) || refName.startsWith(R_TAGS)) {
       return String.format("%s-%s",
           R_BACKUPS + refName.replaceFirst(R_REFS, ""),
