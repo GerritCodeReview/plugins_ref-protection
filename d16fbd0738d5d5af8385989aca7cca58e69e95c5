@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c785825a_11356c16",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/refprotection/BackupRefNameTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-01-20T06:35:42Z",
+      "side": 1,
+      "message": "Missed this one.",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "d16fbd0738d5d5af8385989aca7cca58e69e95c5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
