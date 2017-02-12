@@ -188,7 +188,7 @@ public class BackupRef {
     if (refName.startsWith(R_HEADS) || refName.startsWith(R_TAGS)) {
       return String.format("%s-%s",
           R_BACKUPS + refName.replaceFirst(R_REFS, ""),
-          new SimpleDateFormat("YYYYMMdd-HHmmss").format(new Date()));
+          new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()));
     }
 
     return refName;
