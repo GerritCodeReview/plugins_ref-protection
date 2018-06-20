@@ -173,9 +173,8 @@ public class BackupRef {
   static String get(ProjectResource project, String refName) {
     if (cfg.getFromGerritConfig(pluginName).getBoolean("useTimestamp", true)) {
       return getTimestampBranch(refName);
-    } else {
-      return getSequentialBranch(project, refName);
     }
+    return getSequentialBranch(project, refName);
   }
 
   static String getTimestampBranch(String refName) {
