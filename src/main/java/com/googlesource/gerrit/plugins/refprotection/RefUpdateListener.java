@@ -26,18 +26,19 @@ package com.googlesource.gerrit.plugins.refprotection;
 import static org.eclipse.jgit.lib.Constants.R_HEADS;
 import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
-import com.google.gerrit.common.EventListener;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.data.RefUpdateAttribute;
 import com.google.gerrit.server.events.Event;
+import com.google.gerrit.server.events.EventListener;
 import com.google.gerrit.server.events.RefUpdatedEvent;
 import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.project.NoSuchProjectException;
-import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectResource;
+import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import java.io.IOException;
 import org.eclipse.jgit.errors.RepositoryNotFoundException;
@@ -51,7 +52,7 @@ import org.slf4j.LoggerFactory;
 class RefUpdateListener implements EventListener {
 
   private static final Logger log = LoggerFactory.getLogger(RefUpdateListener.class);
-  private final ProjectControl.GenericFactory projectControl;
+  private final ProjectCache projectCache;
   private final CurrentUser user;
   private final GitRepositoryManager repoManager;
   private final BackupRef backupRef;
@@ -60,13 +61,13 @@ class RefUpdateListener implements EventListener {
 
   @Inject
   RefUpdateListener(
-      ProjectControl.GenericFactory p,
+      ProjectCache projectCache,
       CurrentUser user,
       GitRepositoryManager repoManager,
       BackupRef backupRef,
       PluginConfigFactory cfg,
       @PluginName String pluginName) {
-    this.projectControl = p;
+    this.projectCache = projectCache;
     this.user = user;
     this.repoManager = repoManager;
     this.backupRef = backupRef;
@@ -80,18 +81,25 @@ class RefUpdateListener implements EventListener {
     if (event instanceof RefUpdatedEvent) {
       RefUpdatedEvent refUpdate = (RefUpdatedEvent) event;
       if ((protectDeleted || protectFastForward) && isRelevantRef(refUpdate)) {
-        Project.NameKey nameKey = refUpdate.getProjectNameKey();
         try {
-          ProjectResource project = new ProjectResource(projectControl.controlFor(nameKey, user));
+          ProjectResource project = getProjectResource(refUpdate.getProjectNameKey());
           if ((protectDeleted && isRefDeleted(refUpdate))
               || (protectFastForward && isNonFastForwardUpdate(refUpdate, project))) {
             backupRef.createBackup(refUpdate, project);
           }
-        } catch (NoSuchProjectException | IOException e) {
+        } catch (IOException e) {
           log.error(e.getMessage(), e);
         }
       }
     }
+  }
+
+  private ProjectResource getProjectResource(Project.NameKey nameKey) throws IOException {
+    ProjectState state = projectCache.checkedGet(nameKey);
+    if (state == null) {
+      throw new IOException(new NoSuchProjectException(nameKey));
+    }
+    return new ProjectResource(state, user);
   }
 
   /**
