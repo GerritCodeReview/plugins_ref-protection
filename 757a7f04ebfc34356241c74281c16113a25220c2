@@ -22,6 +22,30 @@
       "revId": "757a7f04ebfc34356241c74281c16113a25220c2",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd95b9d4_1fda58ea",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-06-20T05:56:44Z",
+      "side": 0,
+      "message": "I\u0027d prefer adding a log.  Using checkNotNull will result in an exception being thrown, which is a change in behaviour.",
+      "parentUuid": "2961d0ea_cd8b0262",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 40
+      },
+      "revId": "757a7f04ebfc34356241c74281c16113a25220c2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
