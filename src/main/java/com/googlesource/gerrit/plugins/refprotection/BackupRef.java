@@ -29,16 +29,16 @@ import static org.eclipse.jgit.lib.Constants.R_TAGS;
 
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.api.projects.BranchInput;
-import com.google.gerrit.extensions.restapi.AuthException;
-import com.google.gerrit.extensions.restapi.BadRequestException;
-import com.google.gerrit.extensions.restapi.ResourceConflictException;
+import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.data.AccountAttribute;
 import com.google.gerrit.server.data.RefUpdateAttribute;
 import com.google.gerrit.server.events.RefUpdatedEvent;
 import com.google.gerrit.server.git.GitRepositoryManager;
-import com.google.gerrit.server.project.CreateBranch;
+import com.google.gerrit.server.permissions.PermissionBackendException;
+import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectResource;
+import com.google.gerrit.server.restapi.project.CreateBranch;
 import com.google.inject.Inject;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -155,10 +155,10 @@ public class BackupRef {
 
           try {
             createBranchFactory.create(backupRef).apply(project, input);
-          } catch (BadRequestException
-              | AuthException
-              | ResourceConflictException
-              | IOException e) {
+          } catch (RestApiException
+              | IOException
+              | PermissionBackendException
+              | NoSuchProjectException e) {
             log.error(e.getMessage(), e);
           }
         }
