@@ -141,9 +141,16 @@ public class BackupRef {
             case REJECTED:
               log.error("Tag already exists while creating backup tag");
               break;
-
+            case FAST_FORWARD:
+            case IO_FAILURE:
+            case NOT_ATTEMPTED:
+            case NO_CHANGE:
+            case REJECTED_CURRENT_BRANCH:
+            case REJECTED_MISSING_OBJECT:
+            case REJECTED_OTHER_REASON:
+            case RENAMED:
             default:
-              log.error("Unknown error while creating backup tag");
+              log.error("Unexpected result while creating backup tag: {}", result);
           }
         } else {
           BranchInput input = new BranchInput();
