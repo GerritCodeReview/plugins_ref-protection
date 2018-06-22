@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c0404c4_54a6d7c7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/RefUpdateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-06-22T04:58:31Z",
+      "side": 1,
+      "message": "Why the wrapping? Can\u0027t we just throw new NoSuchProjectException(nameKey)?",
+      "revId": "e9827b506ef33d94477b413407df60af9483dd87",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
