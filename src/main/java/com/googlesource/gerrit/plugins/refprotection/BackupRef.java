@@ -32,6 +32,7 @@ import com.google.gerrit.extensions.api.projects.BranchInput;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.BadRequestException;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
+import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.data.AccountAttribute;
 import com.google.gerrit.server.data.RefUpdateAttribute;
@@ -64,14 +65,14 @@ import org.slf4j.LoggerFactory;
 public class BackupRef {
   public static final String R_BACKUPS = R_REFS + "backups/";
   private static final Logger log = LoggerFactory.getLogger(BackupRef.class);
-  private final CreateBranch.Factory createBranchFactory;
+  private final CreateBranch createBranch;
   @Inject private static PluginConfigFactory cfg;
   @Inject private static GitRepositoryManager repoManager;
   @Inject @PluginName private static String pluginName;
 
   @Inject
-  BackupRef(CreateBranch.Factory createBranchFactory) {
-    this.createBranchFactory = createBranchFactory;
+  BackupRef(CreateBranch createBranch) {
+    this.createBranch = createBranch;
   }
 
   public void createBackup(RefUpdatedEvent event, ProjectResource project) {
@@ -163,7 +164,7 @@ public class BackupRef {
               ObjectId.toString(revWalk.parseCommit(ObjectId.fromString(refUpdate.oldRev)).getId());
 
           try {
-            createBranchFactory.create(backupRef).apply(project, input);
+            createBranch.apply(project, IdString.fromDecoded(backupRef), input);
           } catch (BadRequestException
               | AuthException
               | ResourceConflictException
