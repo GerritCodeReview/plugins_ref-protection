@@ -31,6 +31,7 @@ import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.api.projects.BranchInput;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.extensions.restapi.BadRequestException;
+import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.extensions.restapi.IdString;
 import com.google.gerrit.server.config.PluginConfigFactory;
@@ -204,7 +205,7 @@ public class BackupRef {
     Integer rev = 1;
     String deletedName = branchName.replaceFirst(R_REFS, "");
     try (Repository git = repoManager.openRepository(project.getNameKey())) {
-      for (Ref ref : git.getAllRefs().values()) {
+      for (Ref ref : git.getRefDatabase().getRefs()) {
         String name = ref.getName();
         if (name.startsWith(R_BACKUPS + deletedName + "/")) {
           Integer thisNum = Integer.parseInt(name.substring(name.lastIndexOf('/') + 1));
