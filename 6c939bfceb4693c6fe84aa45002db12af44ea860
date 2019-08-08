@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c43fa4c8_8880cc80",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-08-08T06:26:37Z",
+      "side": 1,
+      "message": "This call is failing with \"not permitted: create on refs/backups/heads/branch-name\".\n\nIt\u0027s been a while since I used this plugin and I can\u0027t remember if this is expected; i.e. create permission is supposed to be given for refs/backups/",
+      "range": {
+        "startLine": 167,
+        "startChar": 12,
+        "endLine": 167,
+        "endChar": 80
+      },
+      "revId": "6c939bfceb4693c6fe84aa45002db12af44ea860",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
