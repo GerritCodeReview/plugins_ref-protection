@@ -22,6 +22,30 @@
       "revId": "6c939bfceb4693c6fe84aa45002db12af44ea860",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "502c50e2_0babdb25",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1012247
+      },
+      "writtenOn": "2019-08-08T08:34:19Z",
+      "side": 1,
+      "message": "I think I have never tested this with a non-admin account, so I cannot answer this. But I think that a regular user probably should not have access to creating random refs under the refs/backups/ namespace. No idea if this is a regression.",
+      "parentUuid": "c43fa4c8_8880cc80",
+      "range": {
+        "startLine": 167,
+        "startChar": 12,
+        "endLine": 167,
+        "endChar": 80
+      },
+      "revId": "6c939bfceb4693c6fe84aa45002db12af44ea860",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
