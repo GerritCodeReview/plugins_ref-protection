@@ -22,6 +22,30 @@
       },
       "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992efdd0_b80de208",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1012612
+      },
+      "writtenOn": "2021-04-01T23:13:03Z",
+      "side": 1,
+      "message": "My personal opinion would be that the plugin should be able to write to refs/backups/* without granting the permissions to users.  Otherwise, a user would be able to manually create a conflicting ref (or otherwise interfere with a backup ref). I’m not sure if the plugin architecture changed recently that makes this plugin execute within the identity of the current user, but it would certainly be good to understand.\n\nBut please take this as only my own opinion.",
+      "parentUuid": "7198988f_a5e47f8c",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
