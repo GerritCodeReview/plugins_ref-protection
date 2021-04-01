@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7198988f_a5e47f8c",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-01T22:43:18Z",
+      "side": 1,
+      "message": "to allow the user, whose identity is inherited by the plugin,",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
