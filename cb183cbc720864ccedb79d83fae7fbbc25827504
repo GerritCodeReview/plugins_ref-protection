@@ -46,6 +46,30 @@
       },
       "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779b18e9_ffb2d70e",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-01T23:15:10Z",
+      "side": 1,
+      "message": "I agree with you, but it isn\u0027t like that at the moment, from what Ponch has experienced so far. Could this be a bug in the plugin code? Or a regression in Gerrit?",
+      "parentUuid": "992efdd0_b80de208",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
