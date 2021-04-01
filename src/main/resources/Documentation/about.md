@@ -22,3 +22,7 @@ By default, the backups are created as branches.  Optionally, they may
 be created as tags, containing information about the original ref that
 was changed, as well as the user that performed the change.  This can
 be enabled by setting `plugin.ref-protection.createTag true`.
+
+The `Create Reference` and `Push` permissions need to be granted to the
+`Registered Users` group on `refs/backups/*`, to allow the user, whose identity
+is inherited by the plugin, creating the backup refs, otherwise backups will fail.
