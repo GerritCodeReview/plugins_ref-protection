@@ -94,6 +94,30 @@
       },
       "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c24543_60cc5fa4",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1014252
+      },
+      "writtenOn": "2021-04-06T07:44:41Z",
+      "side": 1,
+      "message": "...I also feel that the plugin should be able to create the ref regardless of any access-rights.",
+      "parentUuid": "660c5279_1b921ade",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
