@@ -142,6 +142,30 @@
       },
       "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ebcc3e_9673ad73",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1014252
+      },
+      "writtenOn": "2021-04-06T10:27:24Z",
+      "side": 1,
+      "message": "Sorry, yes we should document this quirk until it is fixed.",
+      "parentUuid": "dc03fc3b_2968bcfb",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
