@@ -166,6 +166,30 @@
       },
       "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "470f65ed_baba9bb3",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-06T15:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ebcc3e_9673ad73",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
