@@ -70,6 +70,30 @@
       },
       "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660c5279_1b921ade",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1014252
+      },
+      "writtenOn": "2021-04-06T07:42:27Z",
+      "side": 1,
+      "message": "The plugin uses CreateBranch to create the backup ref, you cannot use an Internal user for this API. Fixing the issue would mean to break out the ref-creation and event-creation from the CreateBranch into a separate API or duplicate the code in the ref-protection plugin.\n\nThe issue has most likely been hidden by the fact that users who have the right to force-push refs are likely to also have the right to create any branch.",
+      "parentUuid": "779b18e9_ffb2d70e",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "cb183cbc720864ccedb79d83fae7fbbc25827504",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
