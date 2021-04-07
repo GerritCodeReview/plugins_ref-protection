@@ -46,6 +46,30 @@
       },
       "revId": "fd63f1e9f0ef80601598d39f79970a2821c7af7d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7297c52_2c6a4c0c",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1014252
+      },
+      "writtenOn": "2021-04-07T08:35:07Z",
+      "side": 1,
+      "message": "\u003e I have also added a note about blocking the Read of the backup refs.\n\nBut will that work? IIRC most permissions checks READ first.\n\n    can(CREATE):\n      if not can(READ):\n         return false\n      ...",
+      "parentUuid": "3a21deea_53983065",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 82
+      },
+      "revId": "fd63f1e9f0ef80601598d39f79970a2821c7af7d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
