@@ -94,6 +94,30 @@
       },
       "revId": "fd63f1e9f0ef80601598d39f79970a2821c7af7d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4071aabb_107d839c",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1014252
+      },
+      "writtenOn": "2021-04-07T10:22:36Z",
+      "side": 1,
+      "message": "\u003e \u003e But will that work? IIRC most permissions checks READ first.\n\u003e \u003e \n\u003e \u003e     can(CREATE):\n\u003e \u003e       if not can(READ):\n\u003e \u003e          return false\n\u003e \u003e       ...\n\u003e \n\u003e That\u0027s what I thought as well. However I tested it and if I don\u0027t block the READ on the \"refs/backups/*\" the references can be read by all the users in certain conditions (for example if you have READ permissions on \"refs/*\").\n\nBut are backups created when the user cannot read \"refs/backup/*\"?\n\nI meant to replace the \"The `Create Reference` and `Push`...\" section with \"Since the `refs/backupds/*` branch is created in the...\".",
+      "parentUuid": "1e04c524_4ad26994",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 82
+      },
+      "revId": "fd63f1e9f0ef80601598d39f79970a2821c7af7d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
