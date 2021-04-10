@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "402849e8_75de55fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-04-10T02:39:51Z",
+      "side": 1,
+      "message": "@Ponch I would add a follow-up change where we remove the requirement to have that permission though, what do you think?",
+      "revId": "eb38b1473ad39035f8835401b1b569df49bec0b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
