@@ -16,6 +16,24 @@
       "message": "@Ponch I would add a follow-up change where we remove the requirement to have that permission though, what do you think?",
       "revId": "eb38b1473ad39035f8835401b1b569df49bec0b6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803c2684_29083d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-04-10T11:44:46Z",
+      "side": 1,
+      "message": "absolutely, I totally agree.  I will file the issue.",
+      "parentUuid": "402849e8_75de55fd",
+      "revId": "eb38b1473ad39035f8835401b1b569df49bec0b6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
