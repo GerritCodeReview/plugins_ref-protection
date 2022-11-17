@@ -16,6 +16,29 @@
       "message": "Add a test that fails before this patch?",
       "revId": "3a6a6b719a3bad496db5d0d4c2654038bac23d75",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1872cbd0_8c8103cf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2022-11-17T09:07:16Z",
+      "side": 1,
+      "message": "I believe this is fine for now; however, as we don\u0027t really catch and manage anything, why not simply catching Exception and logging what it is? Maybe a follow-up change?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 48
+      },
+      "revId": "3a6a6b719a3bad496db5d0d4c2654038bac23d75",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
