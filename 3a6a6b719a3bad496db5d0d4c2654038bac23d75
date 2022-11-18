@@ -39,6 +39,30 @@
       },
       "revId": "3a6a6b719a3bad496db5d0d4c2654038bac23d75",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9c0c98_fa8adf0f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2022-11-18T09:14:51Z",
+      "side": 1,
+      "message": "I have created a ticket for this [1].\n\n[1]: https://bugs.chromium.org/p/gerrit/issues/detail?id\u003d16447",
+      "parentUuid": "1872cbd0_8c8103cf",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 48
+      },
+      "revId": "3a6a6b719a3bad496db5d0d4c2654038bac23d75",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
