@@ -134,7 +134,7 @@ public class BackupRef {
           switch (result) {
             case NEW:
             case FORCED:
-              log.debug("Successfully created backup tag");
+              log.info("Successfully created backup tag");
               break;
 
             case LOCK_FAILURE:
