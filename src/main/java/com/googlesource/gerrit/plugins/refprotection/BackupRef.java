@@ -165,7 +165,8 @@ public class BackupRef {
               ObjectId.toString(revWalk.parseCommit(ObjectId.fromString(refUpdate.oldRev)).getId());
 
           try {
-            createBranch.apply(project, IdString.fromDecoded(backupRef), input);
+            @SuppressWarnings("unused")
+            var unused = createBranch.apply(project, IdString.fromDecoded(backupRef), input);
           } catch (BadRequestException
               | AuthException
               | ResourceConflictException
