@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa75bdb1_e4f4b587",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2026-06-10T12:03:33Z",
+      "side": 1,
+      "message": "Is this really needed or could it be removed?",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "46224e05d4185ac12899688bbc62a3a1766885e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
