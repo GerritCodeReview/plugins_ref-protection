@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a593104_d6b4132f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2026-06-10T11:00:47Z",
+      "side": 1,
+      "message": "Verified locally by calling build both build and test. Should be fine.",
+      "revId": "21905b9e4c6e7ebc9f5fab116544fb194e0ef9b0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
