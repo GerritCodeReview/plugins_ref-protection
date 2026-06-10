@@ -1,28 +1,23 @@
-load("//tools/bzl:junit.bzl", "junit_tests")
 load(
-    "//tools/bzl:plugin.bzl",
+    "@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl",
     "gerrit_plugin",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
+    "gerrit_plugin_tests",
 )
 
 gerrit_plugin(
-    name = "ref-protection",
     srcs = glob(["src/main/java/**/*.java"]),
-    resources = glob(["src/main/resources/**/*"]),
     manifest_entries = [
         "Implementation-Title: Ref Protection plugin",
         "Implementation-URL: http://gerrit.googlesource.com/plugins/ref-protection",
         "Gerrit-PluginName: ref-protection",
         "Gerrit-Module: com.googlesource.gerrit.plugins.refprotection.RefProtectionModule",
     ],
+    plugin = "ref-protection",
+    resources = glob(["src/main/resources/**/*"]),
 )
 
-junit_tests(
+gerrit_plugin_tests(
     name = "ref_protection_tests",
     srcs = glob(["src/test/java/**/*.java"]),
-    tags = ["ref-protection"],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":ref-protection__plugin",
-    ],
+    plugin = "ref-protection",
 )
