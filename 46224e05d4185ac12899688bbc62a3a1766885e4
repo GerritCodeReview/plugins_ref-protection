@@ -22,6 +22,30 @@
       },
       "revId": "46224e05d4185ac12899688bbc62a3a1766885e4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc12cc5_3072cca7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2026-06-11T08:08:18Z",
+      "side": 1,
+      "message": "unfortunately it is as without it we have the following issue while building:\n```\nERROR: /Users/jcentkowski/workspace/open/experiments/gerrit/plugins/ref-protection/BUILD:7:14: Building plugins/ref-protection/libref-protection__plugin-class.jar (3 source files) and running annotation processors (AutoAnnotationProcessor, AutoBuilderProcessor, AutoValueProcessor, AutoOneOfProcessor, AutoValueGsonAdapterFactoryProcessor) failed: (Exit 1): java failed: error executing Javac command (from java_library rule target //plugins/ref-protection:ref-protection__plugin) external/rules_java++toolchains+remotejdk25_macos_aarch64/bin/java \u0027--add-exports\u003djdk.compiler/com.sun.tools.javac.api\u003dALL-UNNAMED\u0027 \u0027--add-exports\u003djdk.compiler/com.sun.tools.javac.main\u003dALL-UNNAMED\u0027 ... (remaining 19 arguments skipped)\nplugins/ref-protection/src/main/java/com/googlesource/gerrit/plugins/refprotection/BackupRef.java:168: error: [CheckReturnValue] The result of `apply(...)` must be used\n            createBranch.apply(project, IdString.fromDecoded(backupRef), input);\n                              ^\n  If you really don\u0027t want to use the result, then assign it to a variable: `var unused \u003d ...`.\n  \n  If callers of `apply(...)` shouldn\u0027t be required to use its result, then annotate it with `@CanIgnoreReturnValue`.\n  \n    (see https://errorprone.info/bugpattern/CheckReturnValue)\n  Did you mean \u0027var unused \u003d createBranch.apply(project, IdString.fromDecoded(backupRef), input);\u0027 or to remove this line?\nTarget //plugins/ref-protection:ref-protection failed to build\nUse --verbose_failures to see the command lines of failed build steps.\nINFO: Elapsed time: 13.655s, Critical Path: 8.47s\nINFO: 4 processes: 432 action cache hit, 2 internal, 2 darwin-sandbox.\nERROR: Build did NOT complete successfully\n```\n\nbut it is kind of chicken-egg problem as it will not build with the next one and vice-versa... should we squash it with the follow-up?",
+      "parentUuid": "fa75bdb1_e4f4b587",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "46224e05d4185ac12899688bbc62a3a1766885e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
